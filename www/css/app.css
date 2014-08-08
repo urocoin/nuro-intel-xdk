@@ -1,0 +1,27 @@
+table {
+    border-collapse: collapse;
+    width: 99%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 1px 5px 1px 5px;
+}
+
+th {
+    padding: 5px;
+}
+
+table.sortable tbody tr:nth-child(2n) td {
+  background: #D0D0D0;
+  color: #000000;
+}
+table.sortable tbody tr:nth-child(2n+1) td {
+  background: #FFFFFF;
+  color: #000000;
+}

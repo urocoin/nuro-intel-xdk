@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+	<!--   
+   You may substitute jQuery for the App Framework selector library.
+   See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+  -->
+	<!-- content goes here-->
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="app_framework/2.1/css/af.ui.min.css">
+		<link rel="stylesheet" type="text/css" href="app_framework/2.1/css/icons.min.css">
+
+		<link rel="stylesheet" type="text/css" href="css/app.css">
+
+		<link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+		<title>Your New Application</title>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<style type="text/css">
+			/* Prevent copy paste for all elements except text fields */
+			*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+			input, textarea  { -webkit-user-select:text; }
+		</style>
+		<script src="intelxdk.js"></script>
+		<script src="xhr.js"></script>
+
+		<script type="text/javascript">
+			/* Intel native bridge is available */
+			var onDeviceReady=function(){
+			//hide splash screen
+			intel.xdk.device.hideSplashScreen();
+			};
+			document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+		</script>
+		<!--   
+   You may substitute jQuery for the App Framework selector library.
+   See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+  -->
+		<script type="application/javascript" src="app_framework/2.1/appframework.js"></script>
+		<script type="application/javascript" src="app_framework/2.1/appframework.ui.js" data-ver="1"></script>
+		<script src="cordova.js"></script>
+		<script type="application/javascript" src="js/index_user_scripts.js"></script>
+		<script type="application/javascript" src="js/af_subpage.js"></script>
+		<script type="text/javascript" src="http://cdn.bitcoinjs.org/libs/bitcoinjs-lib/latest/bitcoinjs-min.js"></script>
+		<script src="js/coinutils-browserify.js"></script>
+		<script src="js/qrcode.js"></script>
+		<script src="js/sorttable.js"></script>
+		<script src="js/nuro.js"></script>
+		<script src="http://debug-software.intel.com/target/target-script-min.js#z1AzvRMoLqA8JSau2tj50XKiEcmT3Mz48OlCAWCfebw"></script>
+
+		<!--   
+   You may substitute jQuery for the App Framework selector library.
+   See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+  -->
+		<script type="application/javascript" src="justgage/js/raphael.min.js"></script>
+		<script type="application/javascript" src="justgage/js/justgage.min.js"></script>
+		<script type="application/javascript" src="justgage/gauges.js"></script>
+	</head>
+
+	<body id="afui">
+
+		<!-- content goes here-->
+		<div class="uwrap" id="content">
+			<div class="upage panel" id="mainpage" data-header="af-header-1" data-footer="af-footer-0">
+				<div class="upage-outer">
+					<header class="container-group inner-element uib_w_1" data-uib="app_framework/header" data-ver="1" id="af-header-1">
+						<h1></h1>
+						<div class="widget-container wrapping-col single-centered"></div>
+
+						<div class="widget-container content-area horiz-area wrapping-col left">
+							<a id="change-account-btn" href="javascript:activate_subpage('#change-account');" class="button">CHANGE ACCOUNT</a>
+						</div>
+
+						<div class="widget-container content-area horiz-area wrapping-col right">
+							<a id="settings-btn" href="javascript:activate_subpage('#account_settings');" class="button">SETTINGS</a>
+						</div>
+					</header>
+				</div>
+				<div class="widget-container content-area horiz-area wrapping-col right"></div>
+
+				<div class="upage-content" id="mainsub">
+
+				</div>
+				<div id="address-book-page" class="upage-content hidden">
+
+					<div class="grid grid-pad urow uib_row_4 row-height-4" data-uib="layout/row" data-ver="0">
+						<div class="col uib_col_6 col-0_12-12" data-uib="layout/col" data-ver="0">
+							<div class="widget-container content-area vertical-col">
+
+								<div class="widget uib_w_20 d-margins" data-uib="media/text" data-ver="0">
+									<div class="widget-container left-receptacle"></div>
+									<div class="widget-container right-receptacle"></div>
+									<div>
+										<p>Add new entries by pasting/scanning.</p>
+									</div>
+								</div>
+								<div class="table-thing with-label widget uib_w_21 d-margins" data-uib="app_framework/input" data-ver="1">
+									<label class="narrow-control label-inline">Label</label>
+									<input class="wide-control" type="text" placeholder="describe this recipent">
+								</div>
+								<div class="table-thing with-label widget uib_w_22 d-margins" data-uib="app_framework/input" data-ver="1">
+									<label class="narrow-control label-inline">Address</label>
+									<input class="wide-control" type="text" placeholder="recipient wallet address">
+								</div>
+								<div class="button-grouped flex widget uib_w_23 d-margins" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_24" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;" id="address-book-scan-barcode-button">Scan Barcode</a>
+									<a class="button widget uib_w_25" data-uib="app_framework/button" data-ver="1">Save</a>
+								</div>
+								<div class="widget uib_w_26 d-margins" data-uib="media/text" data-ver="0">
+									<div class="widget-container left-receptacle"></div>
+									<div class="widget-container right-receptacle"></div>
+									<div>
+										<p>Please select the desired recipient from the list below.</p>
+									</div>
+								</div>
+								<ul class="list widget uib_w_16 d-margins" data-uib="app_framework/listview" data-ver="1">
+									<li class="widget uib_w_17" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>
+									</li>
+									<li class="widget uib_w_18" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>
+									</li>
+									<li class="widget uib_w_19" data-uib="app_framework/listitem" data-ver="1"><a>List Item</a>
+									</li>
+								</ul>
+								<span class="uib_shim"></span>
+							</div>
+						</div>
+						<span class="uib_shim"></span>
+					</div>
+				</div>
+
+				<div id="account-settings" class="upage-content hidden">
+					<p>Accounts Settings</p>
+				</div>
+				<div id="uro-balance-page" class="upage-content hidden">
+
+					<center>
+						<p id="acc-bal-lbl"></p>
+                        <p id="account-balance-page-pending-funds-p"></p>
+
+						<a class="button widget uib_w_9 d-margins icon loading" data-uib="app_framework/button" data-ver="1" id="uro-balance-refresh">Loading Transactions...</a>
+
+						<div id="acc-hist-div">
+						</div>
+					</center>
+
+				</div>
+				<div id="change-account" class="upage-content">
+					<div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
+						<div class="col uib_col_3 col-0_12-12" data-uib="layout/col" data-ver="0">
+							<div class="widget-container content-area vertical-col left">
+								<div class="widget uib_w_3 d-margins" data-uib="media/text" data-ver="0">
+									<div>
+										<p>New accounts are created automatically</p>
+									</div>
+								</div>
+								<div class="table-thing with-label widget uib_w_4 d-margins" data-uib="app_framework/input" data-ver="1">
+									<label class="narrow-control label-inline" for="uro-username-input">Username</label>
+
+									<input class="wide-control" placeholder="e.g. email address" type="text" id="uro-username-input">
+								</div>
+
+								<div class="table-thing with-label widget uib_w_5 d-margins" data-uib="app_framework/input" data-ver="1">
+									<label class="narrow-control label-inline" for="uro-password-input">Password</label>
+
+									<input class="wide-control" type="password" placeholder="&gt;8 letters, digits &amp; symbols" id="uro-password-input">
+								</div>
+								<div class="table-thing with-label widget uib_w_27 d-margins" data-uib="app_framework/input" data-ver="1">
+									<label class="narrow-control label-inline" for="change-account-page-pin-code-input">PIN Code</label>
+
+									<input class="wide-control" placeholder="4 or more digits" type="password" id="change-account-page-pin-code-input">
+								</div>
+								<div class="widget uib_w_6 d-margins" data-uib="media/text" data-ver="0">
+									<div class="widget-container left-receptacle"></div>
+									<div class="widget-container right-receptacle"></div>
+									<div>
+										<p>Usernames &amp; passwords cannot be recovered if lost &amp; cannot be changed without creating a new account. Make sure you write down the username &amp; password on paper stored in a safe. The PIN code is required to send funds.</p>
+									</div>
+								</div>
+								<div class="button-grouped flex widget uib_w_28 d-margins" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_29" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;" id="change-address-page-login-button">Login</a>
+									<a class="button widget uib_w_31" data-uib="app_framework/button" data-ver="1" style="border-top-right-radius: 6px; border-bottom-right-radius: 6px;" id="change-address-page-clear-all-button">Clear all</a>
+								</div><span class="uib_shim"></span>
+							</div>
+						</div>
+						<span class="uib_shim"></span>
+					</div>
+				</div>
+				<div id="buy-uro-page" class="upage-content hidden">
+					<p>Buy Uro Page</p>
+				</div>
+				<div id="send-uro-page" class="upage-content hidden">
+					<div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row" data-ver="0">
+						<div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
+							<div class="widget-container content-area vertical-col">
+
+								<a class="button widget uib_w_15 d-margins" data-uib="app_framework/button" data-ver="1" id="send-page-select-from-address-book-button">Select from Address Book</a>
+								<div class="table-thing with-label widget uib_w_10 d-margins" data-uib="app_framework/input" data-ver="1">
+									<label class="narrow-control label-inline" for="recipient-address-input">Recipient</label>
+
+									<input class="wide-control" type="text" placeholder="Receive Address" id="recipient-address-input">
+								</div><a class="button widget uib_w_11 d-margins" data-uib="app_framework/button" data-ver="1" id="scan-recipent-address-button">Scan Recipient QR Code</a>
+								<div class="table-thing with-label widget uib_w_12 d-margins" data-uib="app_framework/input" data-ver="1">
+									<label class="narrow-control label-inline" for="send-amount-input">Amount</label>
+
+									<input class="wide-control" placeholder="e.g. 1.234" type="text" id="send-amount-input">
+								</div><a class="button widget uib_w_13 d-margins" data-uib="app_framework/button" data-ver="1" id="send-tx-button">Send</a>
+								<div class="widget uib_w_14 d-margins" data-uib="media/text" data-ver="0" id="send-status-label">
+									<div class="widget-container left-receptacle"></div>
+									<div class="widget-container right-receptacle"></div>
+									<div>
+										<p>Please scan/paste in valid receive address and enter the amount to send</p>
+									</div>
+								</div><span class="uib_shim"></span>
+							</div>
+						</div>
+						<span class="uib_shim"></span>
+					</div>
+				</div>
+				<div id="receive-uro-page" class="upage-content hidden">
+					<center>
+						<p id="uro-receive-address-lbl"></p>
+					</center>
+					<center>
+						<div id="uro-receive-address-qrcode"></div>
+					</center>
+				</div>
+
+				<!-- /upage-content -->
+				<!-- /upage-content -->
+
+				<footer class="inner-element uib_w_2" data-uib="app_framework/footer" data-ver="1" id="af-footer-0">
+
+					<a class="icon info" href="javascript:switchSubPage('uro-balance-page'); updateBalancePageContent();">BALANCE</a>
+					<a class="icon upload" href="javascript:switchSubPage('send-uro-page');">SEND</a>
+					<a class="icon download" href="javascript:switchSubPage('receive-uro-page'); updateReceivePageContent();">RECEIVE</a>
+					<a class="icon basket" href="javascript:javascript:switchSubPage('buy-uro-page');">BUY</a>
+
+				</footer>
+			</div>
+			<!-- /upage-outer -->
+
+		</div>
+		<!-- /upage -->
+
+		<!-- /uwrap -->
+	</body>
+
+</html>
