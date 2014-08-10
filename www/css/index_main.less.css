@@ -354,7 +354,7 @@ body:not(#afui) .upage-outer {
 }
 @media all and (min-width: 320px) {
   #afui .row-height-3 > .col > .content-area {
-    min-height: 100px;
+    min-height: 289px;
   }
 }
 @media all and (min-width: 320px) {

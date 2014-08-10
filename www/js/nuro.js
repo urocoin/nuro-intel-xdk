@@ -82,6 +82,7 @@ function resetSendPageStatus() {
     $('#recipient-address-input').val('');
     $('#send-amount-input').val('');
     $('#send-status-label').html('Please scan/paste in valid receive address and enter the amount to send');
+    updateSendPageContent();
 }
 
 function checkError(msg) {
@@ -165,10 +166,21 @@ function updateBalancePageContent() {
 
     $.get(balanceUrl + Nuro.uroCoinKey.publicAddress + '/balance', function(data) {
         
-        $("#acc-bal-lbl").html("Available balance: <b>" 
-                               + satoshiToCoinStr(data.balance) + "</b>");
-        $('#account-balance-page-pending-funds-p').html("Pending deposits: <b>" 
-                               + satoshiToCoinStr(data.unconfirmed_balance) + "</b>");
+        var unconfirmedCoins = satoshiToCoinStr(data.unconfirmed_balance);
+        var confirmedBalance = satoshiToCoinStr(data.balance);
+        var balance = satoshiToCoinStr(data.balance + data.unconfirmed_balance);
+        var fundsAvailable = data.balance;
+        if (data.unconfirmed_balance < 0) {
+            fundsAvailable = data.balance + data.unconfirmed_balance;
+        }
+        fundsAvailable = satoshiToCoinStr(fundsAvailable);
+        
+        $("#acc-bal-lbl").html("Balance (Includes Pending): <b>" 
+                               + balance + "</b>");
+        $('#account-balance-page-pending-funds-p').html("Amounts Pending: <b>" 
+                               + unconfirmedCoins + "</b>");
+        $('#account-balance-page-available-funds-p').html("Available Funds: <b>" 
+                               + fundsAvailable + "</b>");
     }); 
 
     Nuro.accHistDiv.children().remove();
@@ -205,6 +217,20 @@ function updateBalancePageContent() {
     }); 
 }
 
+function updateSendPageContent() {
+    var balanceUrl = 'https://api.blockcypher.com/v1/uro/main/addrs/';
+    $.get(balanceUrl + Nuro.uroCoinKey.publicAddress + '/balance', function(data) {
+        var fundsAvailable = data.balance;
+        if (data.unconfirmed_balance < 0) {
+            fundsAvailable = data.balance + data.unconfirmed_balance;
+        }
+        fundsAvailable = satoshiToCoinStr(fundsAvailable);
+        
+        $('#send-page-available-funds-p').html("<center>Available Funds: <b>" 
+                               + fundsAvailable + "</b></center>");
+    }); 
+}
+
 function register_event_handlers() {
     //qrcode object can only created after document.ready
     Nuro.qrcode = new QRCode("uro-receive-address-qrcode", {width: 256, height: 256});
@@ -226,9 +252,13 @@ function register_event_handlers() {
         $('#change-account-page-pin-code-input').val('');
     });
     
-    $(document).on("click", "#send-page-select-from-address-book-button", function(evt) {
+    $(document).on("click", "#send-page-select-from-address-book-button", function(evt)     {
         alert('send-page-select-from-address-book-button');
         activate_subpage("#address-book-page"); 
+    });
+    
+    $(document).on("click", "#uro-balance-refresh", function(evt) {
+        updateBalancePageContent();
     });
     
     $(document).on("click", "#uro-balance-refresh", function(evt) {

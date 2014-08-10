@@ -137,7 +137,8 @@
 
 					<center>
 						<p id="acc-bal-lbl"></p>
-                        <p id="account-balance-page-pending-funds-p"></p>
+						<p id="account-balance-page-pending-funds-p"></p>
+						<p id="account-balance-page-available-funds-p"></p>
 
 						<a class="button widget uib_w_9 d-margins icon loading" data-uib="app_framework/button" data-ver="1" id="uro-balance-refresh">Loading Transactions...</a>
 
@@ -175,7 +176,7 @@
 									<div class="widget-container left-receptacle"></div>
 									<div class="widget-container right-receptacle"></div>
 									<div>
-										<p>Usernames &amp; passwords cannot be recovered if lost &amp; cannot be changed without creating a new account. Make sure you write down the username &amp; password on paper stored in a safe. The PIN code is required to send funds.</p>
+										<p>Usernames &amp; passwords cannot be recovered if lost &amp; cannot be changed without creating a new account. The PIN code is required to send funds. If someone guesses your username, password and PIN, they can steal your funds.</p>
 									</div>
 								</div>
 								<div class="button-grouped flex widget uib_w_28 d-margins" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_29" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;" id="change-address-page-login-button">Login</a>
@@ -194,7 +195,14 @@
 						<div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
 							<div class="widget-container content-area vertical-col">
 
-								<a class="button widget uib_w_15 d-margins" data-uib="app_framework/button" data-ver="1" id="send-page-select-from-address-book-button">Select from Address Book</a>
+								<div class="widget uib_w_32 d-margins" data-uib="media/text" data-ver="0" id="send-page-available-funds-p">
+									<div class="widget-container left-receptacle"></div>
+									<div class="widget-container right-receptacle"></div>
+									<div>
+										<p>&nbsp;</p>
+										<p>&nbsp;</p>
+									</div>
+								</div><a class="button widget uib_w_15 d-margins" data-uib="app_framework/button" data-ver="1" id="send-page-select-from-address-book-button">Select from Address Book</a>
 								<div class="table-thing with-label widget uib_w_10 d-margins" data-uib="app_framework/input" data-ver="1">
 									<label class="narrow-control label-inline" for="recipient-address-input">Recipient</label>
 
@@ -232,7 +240,7 @@
 				<footer class="inner-element uib_w_2" data-uib="app_framework/footer" data-ver="1" id="af-footer-0">
 
 					<a class="icon info" href="javascript:switchSubPage('uro-balance-page'); updateBalancePageContent();">BALANCE</a>
-					<a class="icon upload" href="javascript:switchSubPage('send-uro-page');">SEND</a>
+					<a class="icon upload" href="javascript:switchSubPage('send-uro-page'); updateSendPageContent();">SEND</a>
 					<a class="icon download" href="javascript:switchSubPage('receive-uro-page'); updateReceivePageContent();">RECEIVE</a>
 					<a class="icon basket" href="javascript:javascript:switchSubPage('buy-uro-page');">BUY</a>
 
