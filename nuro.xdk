@@ -5,7 +5,7 @@
       "type": "App Designer",
       "src": "appDesigner",
       "projectGuid": "263cb139-7e9d-4a28-bc25-76b419231126",
-      "lastModifiedDate": 1406892757049,
+      "lastModifiedDate": 1407761764727,
       "creationDate": 1402876761363
     },
     "XDK-app-designer": "true",
@@ -227,10 +227,12 @@
       "Android": {
         "platform_": "android",
         "name_": "Android",
-        "preferences_": {},
+        "preferences_": {
+          "Orientation": "portrait"
+        },
         "isActive_": true,
-        "appName_": "nuro",
-        "appID_": "not.yet.specified",
+        "appName_": "Nuro: Next Gen URO Netbanking",
+        "appID_": "io.uro.nuro",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -240,7 +242,9 @@
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
         "appVersion_": "1.0.0",
-        "runtime_": "Cordova 3.x"
+        "runtime_": "Cordova 3.x",
+        "appDescription_": "Internet Banking Application for URO Digital Currency",
+        "appAuthor_": "Bohan Huang"
       },
       "Android-Crosswalk": {
         "platform_": "android",
@@ -263,10 +267,12 @@
       "iOS": {
         "platform_": "ios",
         "name_": "iOS",
-        "preferences_": {},
+        "preferences_": {
+          "Orientation": "portrait"
+        },
         "isActive_": true,
-        "appName_": "nuro",
-        "appID_": "not.yet.specified",
+        "appName_": "Nuro: Next Gen URO Netbanking",
+        "appID_": "io.uro.nuro",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -276,15 +282,19 @@
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
         "appVersion_": "1.0.0",
-        "runtime_": "Cordova 3.x"
+        "runtime_": "Cordova 3.x",
+        "appDescription_": "Internet Banking Application for URO Digital Currency",
+        "appAuthor_": "Bohan Huang"
       },
       "Windows8": {
         "platform_": "windows8",
         "name_": "Windows8",
-        "preferences_": {},
+        "preferences_": {
+          "Orientation": "portrait"
+        },
         "isActive_": true,
-        "appName_": "nuro",
-        "appID_": "not.yet.specified",
+        "appName_": "Nuro: Next Gen URO Netbanking",
+        "appID_": "io.uro.nuro",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -294,7 +304,9 @@
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
         "appVersion_": "1.0.0.0",
-        "runtime_": "Cordova 3.x"
+        "runtime_": "Cordova 3.x",
+        "appDescription_": "Internet Banking Application for URO Digital Currency",
+        "appAuthor_": "Bohan Huang"
       },
       "WindowsPhone8": {
         "platform_": "wp8",
