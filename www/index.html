@@ -212,12 +212,16 @@
 									<label class="narrow-control label-inline" for="send-amount-input">Amount</label>
 
 									<input class="wide-control" placeholder="e.g. 1.234" type="text" id="send-amount-input">
+								</div>
+								<div class="table-thing with-label widget uib_w_33 d-margins" data-uib="app_framework/input" data-ver="1">
+									<label class="narrow-control label-inline" for="send-page-pin-input">PIN Code</label>
+									<input class="wide-control" placeholder="PIN created at login" type="password" id="send-page-pin-input">
 								</div><a class="button widget uib_w_13 d-margins" data-uib="app_framework/button" data-ver="1" id="send-tx-button">Send</a>
 								<div class="widget uib_w_14 d-margins" data-uib="media/text" data-ver="0" id="send-status-label">
 									<div class="widget-container left-receptacle"></div>
 									<div class="widget-container right-receptacle"></div>
 									<div>
-										<p>Please scan/paste in valid receive address and enter the amount to send</p>
+										<p>Please scan/paste in recipient address, enter the amount and the PIN and then press send.</p>
 									</div>
 								</div><span class="uib_shim"></span>
 							</div>
@@ -232,6 +236,18 @@
 					<center>
 						<div id="uro-receive-address-qrcode"></div>
 					</center>
+
+					<div class="grid grid-pad urow uib_row_5 row-height-5" data-uib="layout/row" data-ver="0">
+						<div class="col uib_col_7 col-0_12-12" data-uib="layout/col" data-ver="0">
+							<div class="widget-container content-area vertical-col">
+
+								<div class="button-grouped flex widget uib_w_34 d-margins" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_35" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;" id="receive-page-send-email-button">Send Email</a>
+									<a class="button widget uib_w_37" data-uib="app_framework/button" data-ver="1" style="border-top-right-radius: 6px; border-bottom-right-radius: 6px;" id="receive-page-send-sms-button">Send SMS</a>
+								</div><span class="uib_shim"></span>
+							</div>
+						</div>
+						<span class="uib_shim"></span>
+					</div>
 				</div>
 
 				<!-- /upage-content -->

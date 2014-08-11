@@ -10,20 +10,10 @@ function scanBarcodeInput(inputElementId) {
         intel.xdk.notification.beep(1);
         if (evt.success == true) {
             //successful scan
-            console.log(evt.codedata);
             $('#'+inputElementId).val(evt.codedata);
-
-            if (evt.codedata == "http://www.sampleurl.com/fake.html")
-            {
-                    //in the XDK
-            }
-            else
-            {
-                    alert(evt.codedata);
-            }
         } else {
             //failed scan
-            console.log("failed scan");
+            alert("Scan failed, please try again");
         }
     }, false);
     intel.xdk.device.scanBarcode();
@@ -40,18 +30,24 @@ function listProperties(obj) {
 }
 
 function checkUserPass(){
-    var username = $('#uro-username-input').val();
+    var username = $('#uro-username-input').val().trim();
     if (username.length < 8) {
         alert('Username needs to be 8 characters or more');
         return false;
     }
-    var password = $('#uro-password-input').val();
-    if (username.length < 8) {
-        alert('Password needs to be 10 characters or more');
+    var password = $('#uro-password-input').val().trim();
+    if (password.length < 8) {
+        alert('Password needs to be 8 characters or more');
         return false;
     }    
-    Nuro.username = username;
-    Nuro.password = password;
+    var pin = $('#change-account-page-pin-code-input').val().trim();
+    if (pin.length < 4) {
+        alert('PIN needs to be 4 characters or more');
+        return false;
+    }    
+    
+    Nuro.pinCode = pin;
+    password = password + pin; //combine pin into password
     var coinutils = require('coinutils.js');
     Nuro.privateKey = coinutils.createBrainPrivateKey(username, password);
     Nuro.uroCoinKey = coinutils.createUroCoinKey(Nuro.privateKey);
@@ -82,7 +78,27 @@ function resetSendPageStatus() {
     $('#recipient-address-input').val('');
     $('#send-amount-input').val('');
     $('#send-status-label').html('Please scan/paste in valid receive address and enter the amount to send');
+    $('#send-amount-input').val('');
+    $('#send-page-pin-input').val('');
     updateSendPageContent();
+}
+
+function sendEmail() {
+    var isHTML = false;
+    var toString = "";
+    var ccString = "";
+    var bccString = "";
+    intel.xdk.device.sendEmail("My URO receive address is: " 
+                               + Nuro.uroCoinKey.publicAddress 
+                               + "\n\n Please send me:   URO", toString, 
+                               "URO Transaction Request", isHTML, ccString, bccString);
+}
+
+function sendSMS() {
+    var toNumber = "";
+    intel.xdk.device.sendSMS("My URO receive address is: " 
+                               + Nuro.uroCoinKey.publicAddress 
+                               + "\n\n Please send me:   URO", toNumber);
 }
 
 function checkError(msg) {
@@ -141,8 +157,25 @@ function signAndSendTx(newTx) {
 Sends a transaction from data entered on the send page
 */
 function sendTxFromPageData() {
-    var destAddr = $('#recipient-address-input').val();
-    var amt = $('#send-amount-input').val();
+    var destAddr = $('#recipient-address-input').val().trim();
+    var amt = $('#send-amount-input').val().trim();
+    var pin = $('#send-page-pin-input').val().trim();
+    if (destAddr.length < 27 || destAddr.length > 34) {
+        alert('Recipient address is invalid, please check it and try again');
+        return false;
+    }
+    if (amt.length < 1 || amt < 0.01) {
+        alert('Amount must be greater than 0.01, please check it and try again');
+        return false;
+    }
+    if (amt > Nuro.fundsAvailable) {
+        alert('Insufficient funds, please reduce and try again');
+        return false;
+    }
+    if (Nuro.pinCode != pin) {
+        alert('PIN code is incorrect, please try again');
+        return false;
+    }
     createTx(Nuro.uroCoinKey.publicAddress, destAddr, amt);
 }
 
@@ -225,6 +258,7 @@ function updateSendPageContent() {
             fundsAvailable = data.balance + data.unconfirmed_balance;
         }
         fundsAvailable = satoshiToCoinStr(fundsAvailable);
+        Nuro.fundsAvailable = fundsAvailable;
         
         $('#send-page-available-funds-p').html("<center>Available Funds: <b>" 
                                + fundsAvailable + "</b></center>");
@@ -253,8 +287,8 @@ function register_event_handlers() {
     });
     
     $(document).on("click", "#send-page-select-from-address-book-button", function(evt)     {
-        alert('send-page-select-from-address-book-button');
-        activate_subpage("#address-book-page"); 
+        //alert('send-page-select-from-address-book-button');
+        //activate_subpage("#address-book-page"); 
     });
     
     $(document).on("click", "#uro-balance-refresh", function(evt) {
@@ -271,6 +305,14 @@ function register_event_handlers() {
     
     $(document).on("click", "#scan-recipent-address-button", function(evt) {
         scanBarcodeInput('recipient-address-input');
+    });
+    
+    $(document).on("click", "#receive-page-send-sms-button", function(evt) {
+        sendSMS();
+    });
+
+    $(document).on("click", "#receive-page-send-email-button", function(evt) {
+        sendEmail();
     });
 }
 $(document).ready(register_event_handlers);
