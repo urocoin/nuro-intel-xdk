@@ -5,7 +5,7 @@
       "type": "App Designer",
       "src": "appDesigner",
       "projectGuid": "263cb139-7e9d-4a28-bc25-76b419231126",
-      "lastModifiedDate": 1407761764727,
+      "lastModifiedDate": 1407819445018,
       "creationDate": 1402876761363
     },
     "XDK-app-designer": "true",
@@ -33,13 +33,6 @@
     "cordovaPluginsDirectory": "plugins",
     "cordovaPlugins": [
       {
-        "id": "org.apache.cordova.device-motion",
-        "version": "0.2.4",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
         "id": "org.apache.cordova.camera",
         "version": "0.2.9",
         "selectedState": "Auto",
@@ -49,13 +42,6 @@
       {
         "id": "org.apache.cordova.media-capture",
         "version": "0.2.8",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.device-orientation",
-        "version": "0.3.6",
         "selectedState": "Auto",
         "data": {},
         "paramvals": {}
@@ -84,20 +70,6 @@
       {
         "id": "org.apache.cordova.battery-status",
         "version": "0.2.5",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.file",
-        "version": "0.2.5",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.geolocation",
-        "version": "0.3.5",
         "selectedState": "Auto",
         "data": {},
         "paramvals": {}
@@ -145,18 +117,6 @@
         "paramvals": {}
       },
       {
-        "id": "intel.xdk.accelerometer",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.audio",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
         "id": "intel.xdk.base",
         "selectedState": "Auto",
         "data": {},
@@ -194,18 +154,6 @@
       },
       {
         "id": "intel.xdk.facebook",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.file",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.geolocation",
         "selectedState": "Auto",
         "data": {},
         "paramvals": {}
@@ -249,10 +197,13 @@
       "Android-Crosswalk": {
         "platform_": "android",
         "name_": "Android-Crosswalk",
-        "preferences_": {},
+        "preferences_": {
+          "android-minSdkVersion": "2.2",
+          "android-targetedSdkVersion": "2.2"
+        },
         "isActive_": true,
-        "appName_": "nuro",
-        "appID_": "not.yet.specified",
+        "appName_": "Nuro C: Next Gen URO Netbanking",
+        "appID_": "io.uro.nuro",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -262,7 +213,10 @@
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
         "appVersion_": "1.0.0",
-        "runtime_": "Crosswalk with Cordova 3.x"
+        "runtime_": "Crosswalk with Cordova 3.x",
+        "appDescription_": "Crosswalk Powered Internet Banking Application for URO Digital Currency",
+        "appAuthor_": "Bohan Huang",
+        "appVersionCode_": "1.0.0.1"
       },
       "iOS": {
         "platform_": "ios",
@@ -290,11 +244,13 @@
         "platform_": "windows8",
         "name_": "Windows8",
         "preferences_": {
-          "Orientation": "portrait"
+          "Orientation": "portrait",
+          "windows-publisher-display-name": "Bohan Huang",
+          "windows-publisher-id": "CN=A1AB7216-0768-42DF-A521-D4970822D511"
         },
         "isActive_": true,
-        "appName_": "Nuro: Next Gen URO Netbanking",
-        "appID_": "io.uro.nuro",
+        "appName_": "Nuro",
+        "appID_": "24474BohanHuang.Nuro",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -305,7 +261,7 @@
         "crosswalkVersion_": "stable",
         "appVersion_": "1.0.0.0",
         "runtime_": "Cordova 3.x",
-        "appDescription_": "Internet Banking Application for URO Digital Currency",
+        "appDescription_": "Next Generation Internet Banking Application for URO Digital Currency",
         "appAuthor_": "Bohan Huang"
       },
       "WindowsPhone8": {
