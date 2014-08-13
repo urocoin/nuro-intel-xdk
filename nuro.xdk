@@ -5,7 +5,7 @@
       "type": "App Designer",
       "src": "appDesigner",
       "projectGuid": "263cb139-7e9d-4a28-bc25-76b419231126",
-      "lastModifiedDate": 1407819445018,
+      "lastModifiedDate": 1407849076523,
       "creationDate": 1402876761363
     },
     "XDK-app-designer": "true",
@@ -33,28 +33,7 @@
     "cordovaPluginsDirectory": "plugins",
     "cordovaPlugins": [
       {
-        "id": "org.apache.cordova.camera",
-        "version": "0.2.9",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.media-capture",
-        "version": "0.2.8",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
         "id": "org.apache.cordova.network-information",
-        "version": "0.2.8",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.contacts",
         "version": "0.2.8",
         "selectedState": "Auto",
         "data": {},
@@ -75,98 +54,48 @@
         "paramvals": {}
       },
       {
-        "id": "org.apache.cordova.globalization",
-        "version": "0.2.7",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.inappbrowser",
-        "version": "0.3.0",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.media",
-        "version": "0.2.8",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.dialogs",
-        "version": "0.2.5",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.vibration",
-        "version": "0.3.5",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.splashscreen",
-        "version": "0.2.5",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
         "id": "intel.xdk.base",
         "selectedState": "Auto",
         "data": {},
         "paramvals": {}
       },
       {
-        "id": "intel.xdk.cache",
-        "selectedState": "Auto",
+        "id": "org.apache.cordova.camera",
+        "version": "0.2.9",
+        "selectedState": "Included",
         "data": {},
         "paramvals": {}
       },
       {
         "id": "intel.xdk.camera",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.contacts",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.device",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.display",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.facebook",
-        "selectedState": "Auto",
+        "selectedState": "Included",
         "data": {},
         "paramvals": {}
       },
       {
         "id": "intel.xdk.notification",
-        "selectedState": "Auto",
+        "selectedState": "Included",
         "data": {},
         "paramvals": {}
       },
       {
-        "id": "intel.xdk.player",
-        "selectedState": "Auto",
+        "id": "org.apache.cordova.vibration",
+        "version": "0.3.5",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
+        "id": "org.apache.cordova.splashscreen",
+        "version": "0.2.5",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
+        "id": "org.apache.cordova.inappbrowser",
+        "version": "0.3.0",
+        "selectedState": "Included",
         "data": {},
         "paramvals": {}
       }

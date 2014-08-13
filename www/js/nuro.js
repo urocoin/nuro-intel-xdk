@@ -57,6 +57,17 @@ function checkUserPass(){
     return true;
 }
 
+function clearPrivateData() {
+    $('#uro-username-input').val('');
+    $('#uro-password-input').val('');
+    $('#change-account-page-pin-code-input').val('');
+    Nuro.pinCode = null;
+    Nuro.privateKey = null;
+    Nuro.uroCoinKey = null;
+    Nuro.ltcCoinKey = null;
+    Nuro.btcCoinKey = null;
+}
+
 function switchSubPage(pageId) {
     if (checkUserPass()) {
         activate_subpage('#' + pageId);
@@ -314,5 +325,10 @@ function register_event_handlers() {
     $(document).on("click", "#receive-page-send-email-button", function(evt) {
         sendEmail();
     });
+    
+    //remove 300ms delay in clicks
+    window.addEventListener('load', function() {
+        FastClick.attach(document.body);
+    }, false);
 }
 $(document).ready(register_event_handlers);

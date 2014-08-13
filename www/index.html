@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <!--HTML5 doctype-->
 <html>
-	<!--   
-   You may substitute jQuery for the App Framework selector library.
-   See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
-  -->
-	<!-- content goes here-->
-
 	<head>
 		<link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
 		<meta charset="UTF-8">
@@ -16,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="css/app.css">
 
 		<link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
-		<title>Your New Application</title>
+		<title>uro: Next Gen URO Internet Banking</title>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
 		<style type="text/css">
@@ -26,19 +20,6 @@
 		</style>
 		<script src="intelxdk.js"></script>
 		<script src="xhr.js"></script>
-
-		<script type="text/javascript">
-			/* Intel native bridge is available */
-			var onDeviceReady=function(){
-			//hide splash screen
-			intel.xdk.device.hideSplashScreen();
-			};
-			document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
-		</script>
-		<!--   
-   You may substitute jQuery for the App Framework selector library.
-   See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
-  -->
 		<script type="application/javascript" src="app_framework/2.1/appframework.js"></script>
 		<script type="application/javascript" src="app_framework/2.1/appframework.ui.js" data-ver="1"></script>
 		<script src="cordova.js"></script>
@@ -50,14 +31,19 @@
 		<script src="js/sorttable.js"></script>
 		<script src="js/nuro.js"></script>
 		<script src="http://debug-software.intel.com/target/target-script-min.js#z1AzvRMoLqA8JSau2tj50XKiEcmT3Mz48OlCAWCfebw"></script>
-
-		<!--   
-   You may substitute jQuery for the App Framework selector library.
-   See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
-  -->
 		<script type="application/javascript" src="justgage/js/raphael.min.js"></script>
 		<script type="application/javascript" src="justgage/js/justgage.min.js"></script>
 		<script type="application/javascript" src="justgage/gauges.js"></script>
+        <script type='application/javascript' src='js/fastclick.js'></script>
+        
+        <script type="text/javascript">
+			/* Intel native bridge is available */
+			var onDeviceReady=function(){
+			//hide splash screen
+			intel.xdk.device.hideSplashScreen();
+			};
+			document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+		</script>
 	</head>
 
 	<body id="afui">
@@ -75,7 +61,7 @@
 						</div>
 
 						<div class="widget-container content-area horiz-area wrapping-col right">
-							<a id="settings-btn" href="javascript:activate_subpage('#account_settings');" class="button">SETTINGS</a>
+							<a id="logout-btn" href="javascript:clearPrivateData();activate_subpage('#change-account');" class="button">LOGOUT</a>
 						</div>
 					</header>
 				</div>
