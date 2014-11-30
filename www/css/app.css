@@ -21,7 +21,12 @@ table.sortable tbody tr:nth-child(2n) td {
   background: #D0D0D0;
   color: #000000;
 }
+
 table.sortable tbody tr:nth-child(2n+1) td {
   background: #FFFFFF;
   color: #000000;
+}
+
+touch-friendly-radio-button {
+  margin-bottom: 15px;
 }

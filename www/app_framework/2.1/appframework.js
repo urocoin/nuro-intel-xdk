@@ -2538,7 +2538,7 @@ if (!window.af || typeof(af) !== "function") {
         * @title $().delegate(selector,event,[data],callback)
         */
         function addDelegate(element,event,callback,selector,data){
-            console.log(element,event,callback,selector,data);
+            //console.log(element,event,callback,selector,data);
             add(element, event, callback, selector, function(fn) {
                     return function(e) {
                         var evt, match = $(e.target).closest(selector, element).get(0);

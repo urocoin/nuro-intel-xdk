@@ -276,7 +276,7 @@ body:not(#afui) .upage-outer {
     padding-right: 20px;
   }
 }
-@media all and (min-width: 320px) {
+@media all and (min-width: 768px) {
   #afui .row-height-1 > .col > .content-area {
     min-height: 290px;
   }
@@ -311,14 +311,14 @@ body:not(#afui) .upage-outer {
 @media all {
   #afui .d-margins {
     margin-top: 5px;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
   #afui .wrapping-col > .d-margins {
     margin-left: 4px;
     margin-right: 5px;
   }
 }
-@media all and (min-width: 320px) {
+@media all and (min-width: 768px) {
   #afui .row-height-2 > .col > .content-area {
     min-height: 100px;
   }
@@ -352,22 +352,22 @@ body:not(#afui) .upage-outer {
     max-height: 200px;
   }
 }
-@media all and (min-width: 320px) {
+@media all and (min-width: 768px) {
   #afui .row-height-3 > .col > .content-area {
     min-height: 289px;
   }
 }
-@media all and (min-width: 320px) {
+@media all and (min-width: 768px) {
   #afui .row-height-4 > .col > .content-area {
     min-height: 212px;
   }
 }
-@media all and (min-width: 320px) {
+@media all and (min-width: 768px) {
   #afui .row-height-5 > .col > .content-area {
     min-height: 100px;
   }
 }
-@media all and (min-width: 320px) {
+@media all and (min-width: 768px) {
   #afui .row-height-6 > .col > .content-area {
     min-height: 100px;
   }
@@ -384,7 +384,7 @@ body:not(#afui) .upage-outer {
   padding-left: 10px;
   padding-right: 10px;
 }
-@media all and (min-width: 320px) {
+@media all and (min-width: 768px) {
   .uib_col_15 {
     width: 50%;
   }
@@ -406,7 +406,7 @@ body:not(#afui) .upage-outer {
     padding-right: 0px !important;
   }
 }
-@media all and (max-width: 320px) {
+@media all and (max-width: 768px) {
   .col-0_6-12 {
     width: auto;
     float: none !important;
@@ -422,7 +422,7 @@ body:not(#afui) .upage-outer {
     padding-right: 0px !important;
   }
 }
-@media all and (min-width: 320px) {
+@media all and (min-width: 768px) {
   #afui .row-height-7 > .col > .content-area {
     min-height: 100px;
   }
@@ -550,5 +550,82 @@ body:not(#afui) .upage-outer {
   }
   .urow.cright > .col-0_12-12 {
     padding-left: 0px !important;
+  }
+}
+.uib_row_6:not(.cright) > .col {
+  padding-right: 20px;
+}
+.uib_row_6.cright > .col {
+  padding-left: 20px;
+}
+@media all {
+  .col-0_12-12 {
+    width: auto;
+    float: none !important;
+  }
+  .urow:not(.cright) > .col-0_12-12 {
+    padding-right: 0px !important;
+  }
+  .urow.cright > .col-0_12-12 {
+    padding-left: 0px !important;
+  }
+}
+#afui input[type="radio"] + label,
+#afui input[type="checkbox"]:not(.toggle) + label {
+  float: none;
+  width: 100%;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#afui .wrapping-col input[type="radio"] + label,
+#afui .wrapping-col input[type="checkbox"]:not(.toggle) + label {
+  width: auto;
+}
+#afui .table-thing > .wide-control > .widget > input[type="radio"] + label,
+#afui .table-thing > .wide-control > .widget > input[type="checkbox"]:not(.toggle) + label {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+#afui .table-thing > .wide-control > .widget > input[type="radio"] + label:before,
+#afui .table-thing > .wide-control > .widget > input[type="checkbox"]:not(.toggle) + label:before {
+  top: 0px;
+}
+#afui .wide-control > .d-margins {
+  margin: 0;
+}
+@media all {
+  #afui .default-sprite-button div.uib-sprite {
+    background-image: url(../images/Arrow.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+@media all {
+  #afui .hover-sprite-button:hover div.uib-sprite {
+    background-image: url(../images/Checkmark.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+@media all {
+  #afui .active-sprite-button:active div.uib-sprite {
+    background-image: url(../images/X.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+@media all {
+  #afui .sprite-sizing {
+    height: 135px !important;
+    width: 135px !important;
+    -webkit-flex: 0 0 auto !important;
+    -moz-flex: 0 0 auto !important;
+    -ms-flex: 0 0 auto !important;
+    -o-flex: 0 0 auto !important;
+    flex: 0 0 auto !important;
   }
 }

@@ -2949,7 +2949,11 @@ var map = {
   "NMC":       [0x34, 0xB4, 0x05],
   "PPC":       [0x37, 0xB7, 0x75], 
 
+  "RDD":       [0x3D, 0xBD, 0x05],
+  "RDD-TEST":  [0x6F, 0xEF, 0xC4],
+
   "URO":       [0x44, 0xC4, 0x05],
+  "URO-TEST":  [0x6F, 0xEF, 0xC4]
 }
 
 
@@ -2973,7 +2977,7 @@ function coininfo(input) {
 
   return ret
 }
-
+    
 },{}],19:[function(require,module,exports){
 (function (Buffer){
 var util = require('util')
@@ -5715,6 +5719,16 @@ var coinutils = new function() {
    */
   this.createBtcCoinKey = function (privateKey) {
     return new CoinKey(privateKey, CoinInfo('BTC').versions);
+  };
+    
+  /**
+   * Creates a CryptocoinJS CoinKey for the specified coin network corresponding 
+   * to the supplied private key 
+   * @param {Buffer} privateKey
+   * @param {string} coinName
+   */
+  this.createCoinKey = function (privateKey, coinName) {
+    return new CoinKey(privateKey, CoinInfo(coinName).versions);
   };
 };
 

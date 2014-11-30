@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!--HTML5 doctype-->
 <html>
+
 	<head>
 		<link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
 		<meta charset="UTF-8">
@@ -10,14 +11,14 @@
 		<link rel="stylesheet" type="text/css" href="css/app.css">
 
 		<link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
-		<title>uro: Next Gen URO Internet Banking</title>
+		<title>Nuro: Internet Banking</title>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
-		<style type="text/css">
+		<!-- <style type="text/css">
 			/* Prevent copy paste for all elements except text fields */
-			*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+			  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
 			input, textarea  { -webkit-user-select:text; }
-		</style>
+		</style> -->
 		<script src="intelxdk.js"></script>
 		<script src="xhr.js"></script>
 		<script type="application/javascript" src="app_framework/2.1/appframework.js"></script>
@@ -25,25 +26,17 @@
 		<script src="cordova.js"></script>
 		<script type="application/javascript" src="js/index_user_scripts.js"></script>
 		<script type="application/javascript" src="js/af_subpage.js"></script>
-		<script type="text/javascript" src="http://cdn.bitcoinjs.org/libs/bitcoinjs-lib/latest/bitcoinjs-min.js"></script>
+		<!-- <script type="text/javascript" src="http://cdn.bitcoinjs.org/libs/bitcoinjs-lib/latest/bitcoinjs-min.js"></script> -->
 		<script src="js/coinutils-browserify.js"></script>
 		<script src="js/qrcode.js"></script>
 		<script src="js/sorttable.js"></script>
 		<script src="js/nuro.js"></script>
-		<script src="http://debug-software.intel.com/target/target-script-min.js#z1AzvRMoLqA8JSau2tj50XKiEcmT3Mz48OlCAWCfebw"></script>
+        <script src="js/moment-with-locales.min.js"></script>
+		<!-- UNCOMMENT ONLY WHILE DEBUGGING - POTENTIAL SECURITY RISK <script src="http://debug-software.intel.com/target/target-script-min.js#z1AzvRMoLqA8JSau2tj50XKiEcmT3Mz48OlCAWCfebw"></script> -->
 		<script type="application/javascript" src="justgage/js/raphael.min.js"></script>
 		<script type="application/javascript" src="justgage/js/justgage.min.js"></script>
 		<script type="application/javascript" src="justgage/gauges.js"></script>
-        <script type='application/javascript' src='js/fastclick.js'></script>
-        
-        <script type="text/javascript">
-			/* Intel native bridge is available */
-			var onDeviceReady=function(){
-			//hide splash screen
-			intel.xdk.device.hideSplashScreen();
-			};
-			document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
-		</script>
+
 	</head>
 
 	<body id="afui">
@@ -57,13 +50,97 @@
 						<div class="widget-container wrapping-col single-centered"></div>
 
 						<div class="widget-container content-area horiz-area wrapping-col left">
-							<a id="change-account-btn" href="javascript:activate_subpage('#change-account');" class="button">CHANGE ACCOUNT</a>
+							<a id="change-account-btn" href="javascript:activate_subpage('#change-account');$.ui.toggleSideMenu();" class="button">CHANGE ACCOUNT</a>
 						</div>
 
 						<div class="widget-container content-area horiz-area wrapping-col right">
 							<a id="logout-btn" href="javascript:clearPrivateData();activate_subpage('#change-account');" class="button">LOGOUT</a>
 						</div>
 					</header>
+					<nav class="af-sidemenu inner-element uib_w_39" data-uib="app_framework/side_menu_area" data-ver="1">
+						<div class="sidebar-content">
+							<div class="col uib_col_8 single-col" data-uib="layout/col" data-ver="0">
+								<div class="widget-container content-area vertical-col">
+									<span class="uib_shim"></span>
+								</div>
+							</div>
+
+							<div class="grid grid-pad urow uib_row_6 row-height-6" data-uib="layout/row" data-ver="0">
+								<div class="col uib_col_9 col-0_12-12" data-uib="layout/col" data-ver="0">
+									<div class="widget-container content-area vertical-col">
+
+										<div class="widget uib_w_44" data-uib="media/text" data-ver="0">
+											<div class="widget-container left-receptacle"></div>
+											<div class="widget-container right-receptacle"></div>
+											<div>
+												<p>ACCOUNT TYPE:</p>
+											</div>
+										</div>
+										<ul class="list widget uib_w_40 d-margins" data-uib="app_framework/listview" data-ver="1">
+											<li class="widget uib_w_41" data-uib="app_framework/listitem" data-ver="1" id="sidemenu-uro-btn"><a class="icon check">Urocoin (URO)</a>
+											</li>
+											<li class="widget uib_w_42" data-uib="app_framework/listitem" data-ver="1" id="sidemenu-btc-btn"><a>Bitcoin (BTC)</a>
+											</li>
+											<li class="widget uib_w_43" data-uib="app_framework/listitem" data-ver="1" id="sidemenu-ltc-btn"><a>Litecoin (LTC)</a>
+											</li>
+										</ul>
+										<div class="widget uib_w_56 d-margins" data-uib="media/text" data-ver="0">
+											<div class="widget-container left-receptacle"></div>
+											<div class="widget-container right-receptacle"></div>
+											<div>
+												<p>ACCOUNT CATEGORY:</p>
+											</div>
+										</div>
+
+										<div class="table-thing with-label widget uib_w_46 d-margins" data-uib="app_framework/radio_button_group" data-ver="1" data-child-name="af-group-0">
+											<label class="narrow-control label-inline">&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</label>
+
+											<div id="af-group-acc-cats" class="wide-control touch-friendly-radio-button">
+												<div class="widget uib_w_47" data-uib="app_framework/radio_button" data-ver="1">
+													<input class="acc-cat-radio-btns" type="radio" id="af-radio-acc-cat-standard" value="" name="af-group-0" checked="checked">
+													<label class="content-box" for="af-radio-acc-cat-standard">Standard</label>
+												</div>
+												<div class="widget uib_w_48" data-uib="app_framework/radio_button" data-ver="1">
+													<input class="acc-cat-radio-btns" type="radio" id="af-radio-acc-cat-cheque" value="Cheque" name="af-group-0">
+													<label class="content-box" for="af-radio-acc-cat-cheque">Cheque</label>
+												</div>
+												<div class="widget uib_w_49" data-uib="app_framework/radio_button" data-ver="1">
+													<input class="acc-cat-radio-btns" type="radio" id="af-radio-acc-cat-savings" value="Savings" name="af-group-0">
+													<label class="content-box" for="af-radio-acc-cat-savings">Savings</label>
+												</div>
+												<div class="widget uib_w_50" data-uib="app_framework/radio_button" data-ver="1">
+													<input class="acc-cat-radio-btns" type="radio" id="af-radio-acc-cat-investment" value="Investment" name="af-group-0">
+													<label class="content-box" for="af-radio-acc-cat-investment">Investment</label>
+												</div>
+												<div class="widget uib_w_51" data-uib="app_framework/radio_button" data-ver="1">
+													<input class="acc-cat-radio-btns" type="radio" id="af-radio-acc-cat-temporary" value="Temporary" name="af-group-0">
+													<label class="content-box" for="af-radio-acc-cat-temporary">Temporary</label>
+												</div>
+												<div class="widget uib_w_52" data-uib="app_framework/radio_button" data-ver="1">
+													<input class="acc-cat-radio-btns" type="radio" id="af-radio-acc-cat-private" value="Private" name="af-group-0">
+													<label class="content-box" for="af-radio-acc-cat-private">Private</label>
+												</div>
+												<div class="widget uib_w_55" data-uib="app_framework/radio_button" data-ver="1">
+													<input class="acc-cat-radio-btns" type="radio" id="af-radio-acc-cat-special" value="Special" name="af-group-0">
+													<label class="content-box" for="af-radio-acc-cat-special">Special</label>
+												</div>
+												<div class="widget uib_w_54" data-uib="app_framework/radio_button" data-ver="1">
+													<input class="acc-cat-radio-btns" type="radio" id="af-radio-acc-cat-public" value="Public" name="af-group-0">
+													<label class="content-box" for="af-radio-acc-cat-public">Public</label>
+												</div>
+												<div class="widget uib_w_54" data-uib="app_framework/radio_button" data-ver="1">
+													<input class="acc-cat-radio-btns" type="radio" id="af-radio-acc-cat-donations" value="Donations" name="af-group-0">
+													<label class="content-box" for="af-radio-acc-cat-donations">Donations</label>
+												</div>
+
+											</div>
+										</div><span class="uib_shim"></span>
+									</div>
+								</div>
+								<span class="uib_shim"></span>
+							</div>
+						</div>
+					</nav>
 				</div>
 				<div class="widget-container content-area horiz-area wrapping-col right"></div>
 
@@ -76,25 +153,25 @@
 						<div class="col uib_col_6 col-0_12-12" data-uib="layout/col" data-ver="0">
 							<div class="widget-container content-area vertical-col">
 
-								<div class="widget uib_w_20 d-margins" data-uib="media/text" data-ver="0">
+								<div class="widget uib_w_20" data-uib="media/text" data-ver="0">
 									<div class="widget-container left-receptacle"></div>
 									<div class="widget-container right-receptacle"></div>
 									<div>
 										<p>Add new entries by pasting/scanning.</p>
 									</div>
 								</div>
-								<div class="table-thing with-label widget uib_w_21 d-margins" data-uib="app_framework/input" data-ver="1">
+								<div class="table-thing with-label widget uib_w_21" data-uib="app_framework/input" data-ver="1">
 									<label class="narrow-control label-inline">Label</label>
 									<input class="wide-control" type="text" placeholder="describe this recipent">
 								</div>
-								<div class="table-thing with-label widget uib_w_22 d-margins" data-uib="app_framework/input" data-ver="1">
+								<div class="table-thing with-label widget uib_w_22" data-uib="app_framework/input" data-ver="1">
 									<label class="narrow-control label-inline">Address</label>
 									<input class="wide-control" type="text" placeholder="recipient wallet address">
 								</div>
 								<div class="button-grouped flex widget uib_w_23 d-margins" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_24" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;" id="address-book-scan-barcode-button">Scan Barcode</a>
 									<a class="button widget uib_w_25" data-uib="app_framework/button" data-ver="1">Save</a>
 								</div>
-								<div class="widget uib_w_26 d-margins" data-uib="media/text" data-ver="0">
+								<div class="widget uib_w_26" data-uib="media/text" data-ver="0">
 									<div class="widget-container left-receptacle"></div>
 									<div class="widget-container right-receptacle"></div>
 									<div>
@@ -126,7 +203,7 @@
 						<p id="account-balance-page-pending-funds-p"></p>
 						<p id="account-balance-page-available-funds-p"></p>
 
-						<a class="button widget uib_w_9 d-margins icon loading" data-uib="app_framework/button" data-ver="1" id="uro-balance-refresh">Loading Transactions...</a>
+						<a class="button widget uib_w_9 icon loading" data-uib="app_framework/button" data-ver="1" id="uro-balance-refresh">Loading Transactions...</a>
 
 						<div id="acc-hist-div">
 						</div>
@@ -137,32 +214,32 @@
 					<div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
 						<div class="col uib_col_3 col-0_12-12" data-uib="layout/col" data-ver="0">
 							<div class="widget-container content-area vertical-col left">
-								<div class="widget uib_w_3 d-margins" data-uib="media/text" data-ver="0">
+								<div class="widget uib_w_3" data-uib="media/text" data-ver="0">
 									<div>
-										<p>New accounts are created automatically</p>
+										<p>New profiles are created automatically</p>
 									</div>
 								</div>
-								<div class="table-thing with-label widget uib_w_4 d-margins" data-uib="app_framework/input" data-ver="1">
+								<div class="table-thing with-label widget uib_w_4" data-uib="app_framework/input" data-ver="1">
 									<label class="narrow-control label-inline" for="uro-username-input">Username</label>
 
-									<input class="wide-control" placeholder="e.g. email address" type="text" id="uro-username-input">
+									<input class="wide-control" placeholder="&gt;8 letters, digits &amp; symbols" type="text" id="uro-username-input">
 								</div>
 
-								<div class="table-thing with-label widget uib_w_5 d-margins" data-uib="app_framework/input" data-ver="1">
+								<div class="table-thing with-label widget uib_w_5" data-uib="app_framework/input" data-ver="1">
 									<label class="narrow-control label-inline" for="uro-password-input">Password</label>
 
 									<input class="wide-control" type="password" placeholder="&gt;8 letters, digits &amp; symbols" id="uro-password-input">
 								</div>
-								<div class="table-thing with-label widget uib_w_27 d-margins" data-uib="app_framework/input" data-ver="1">
+								<div class="table-thing with-label widget uib_w_27" data-uib="app_framework/input" data-ver="1">
 									<label class="narrow-control label-inline" for="change-account-page-pin-code-input">PIN Code</label>
 
 									<input class="wide-control" placeholder="4 or more digits" type="password" id="change-account-page-pin-code-input">
 								</div>
-								<div class="widget uib_w_6 d-margins" data-uib="media/text" data-ver="0">
+								<div class="widget uib_w_6" data-uib="media/text" data-ver="0">
 									<div class="widget-container left-receptacle"></div>
 									<div class="widget-container right-receptacle"></div>
 									<div>
-										<p>Usernames &amp; passwords cannot be recovered if lost &amp; cannot be changed without creating a new account. The PIN code is required to send funds. If someone guesses your username, password and PIN, they can steal your funds.</p>
+										<p>Usernames &amp; passwords <b>cannot be recovered if lost</b> or changed without creating a new profile (funds must be sent manually between profiles). PIN is required to send funds. <b>If your username, password or PIN is guessed by a thief, funds will be lost.</b></p>
 									</div>
 								</div>
 								<div class="button-grouped flex widget uib_w_28 d-margins" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_29" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;" id="change-address-page-login-button">Login</a>
@@ -181,29 +258,29 @@
 						<div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
 							<div class="widget-container content-area vertical-col">
 
-								<div class="widget uib_w_32 d-margins" data-uib="media/text" data-ver="0" id="send-page-available-funds-p">
+								<div class="widget uib_w_32" data-uib="media/text" data-ver="0" id="send-page-available-funds-p">
 									<div class="widget-container left-receptacle"></div>
 									<div class="widget-container right-receptacle"></div>
 									<div>
 										<p>&nbsp;</p>
 										<p>&nbsp;</p>
 									</div>
-								</div><a class="button widget uib_w_15 d-margins" data-uib="app_framework/button" data-ver="1" id="send-page-select-from-address-book-button">Select from Address Book</a>
-								<div class="table-thing with-label widget uib_w_10 d-margins" data-uib="app_framework/input" data-ver="1">
+								</div><a class="button widget uib_w_15 disabled" data-uib="app_framework/button" data-ver="1" id="send-page-select-from-address-book-button">Transaction Fee: 0.0001</a>
+								<div class="table-thing with-label widget uib_w_10" data-uib="app_framework/input" data-ver="1">
 									<label class="narrow-control label-inline" for="recipient-address-input">Recipient</label>
 
 									<input class="wide-control" type="text" placeholder="Receive Address" id="recipient-address-input">
-								</div><a class="button widget uib_w_11 d-margins" data-uib="app_framework/button" data-ver="1" id="scan-recipent-address-button">Scan Recipient QR Code</a>
-								<div class="table-thing with-label widget uib_w_12 d-margins" data-uib="app_framework/input" data-ver="1">
+								</div><a class="button widget uib_w_11" data-uib="app_framework/button" data-ver="1" id="scan-recipent-address-button">Scan Recipient QR Code</a>
+								<div class="table-thing with-label widget uib_w_12" data-uib="app_framework/input" data-ver="1">
 									<label class="narrow-control label-inline" for="send-amount-input">Amount</label>
 
 									<input class="wide-control" placeholder="e.g. 1.234" type="text" id="send-amount-input">
 								</div>
-								<div class="table-thing with-label widget uib_w_33 d-margins" data-uib="app_framework/input" data-ver="1">
+								<div class="table-thing with-label widget uib_w_33" data-uib="app_framework/input" data-ver="1">
 									<label class="narrow-control label-inline" for="send-page-pin-input">PIN Code</label>
 									<input class="wide-control" placeholder="PIN created at login" type="password" id="send-page-pin-input">
-								</div><a class="button widget uib_w_13 d-margins" data-uib="app_framework/button" data-ver="1" id="send-tx-button">Send</a>
-								<div class="widget uib_w_14 d-margins" data-uib="media/text" data-ver="0" id="send-status-label">
+								</div><a class="button widget uib_w_13" data-uib="app_framework/button" data-ver="1" id="send-tx-button">Send</a>
+								<div class="widget uib_w_14" data-uib="media/text" data-ver="0" id="send-status-label">
 									<div class="widget-container left-receptacle"></div>
 									<div class="widget-container right-receptacle"></div>
 									<div>
@@ -217,7 +294,7 @@
 				</div>
 				<div id="receive-uro-page" class="upage-content hidden">
 					<center>
-						<p id="uro-receive-address-lbl"></p>
+						<p id="uro-receive-address-lbl"><input id="uro-receive-address-input" type="text" value=""></p>
 					</center>
 					<center>
 						<div id="uro-receive-address-qrcode"></div>
@@ -227,12 +304,15 @@
 						<div class="col uib_col_7 col-0_12-12" data-uib="layout/col" data-ver="0">
 							<div class="widget-container content-area vertical-col">
 
-								<div class="button-grouped flex widget uib_w_34 d-margins" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_35" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;" id="receive-page-send-email-button">Send Email</a>
+								<div class="button-grouped flex widget uib_w_34" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_35" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;" id="receive-page-send-email-button">Send Email</a>
 									<a class="button widget uib_w_37" data-uib="app_framework/button" data-ver="1" style="border-top-right-radius: 6px; border-bottom-right-radius: 6px;" id="receive-page-send-sms-button">Send SMS</a>
-								</div><span class="uib_shim"></span>
+								</div>
+                                <br>
+                                <div class="button-grouped flex widget uib_w_34" data-uib="app_framework/button_group" data-ver="1">
+                                <a class="button widget uib_w_38" data-uib="app_framework/button" data-ver="1" id="receive-page-copy-address-to-clipboard-button">Copy Address to Clipboard</a> 
+                                </div>
 							</div>
 						</div>
-						<span class="uib_shim"></span>
 					</div>
 				</div>
 
